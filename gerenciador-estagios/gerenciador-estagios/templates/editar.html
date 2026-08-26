@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Editar {{ aluno.nome }} - Gerenciador de Estagios{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>Editar aluno e estagio</h2>
+    </div>
+    <div class="card-body">
+        <form method="post" action="{{ url_for('editar_aluno', aluno_id=aluno.id) }}">
+            <h3 class="mb-2 text-sm" style="color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.04em;">Dados do aluno</h3>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nome">Nome completo *</label>
+                    <input type="text" id="nome" name="nome" required maxlength="200" value="{{ aluno.nome }}">
+                </div>
+                <div class="form-group">
+                    <label for="matricula">Matricula *</label>
+                    <input type="text" id="matricula" name="matricula" required maxlength="50" value="{{ aluno.matricula }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="curso">Curso *</label>
+                <input type="text" id="curso" name="curso" required maxlength="150" value="{{ aluno.curso }}">
+            </div>
+
+            {% if estagio %}
+            <h3 class="mb-2 mt-2 text-sm" style="color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.04em;">Dados do estagio</h3>
+
+            <div class="form-group">
+                <label for="empresa">Empresa *</label>
+                <input type="text" id="empresa" name="empresa" required maxlength="200" value="{{ estagio.empresa }}">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="inicio">Data de inicio *</label>
+                    <input type="date" id="inicio" name="inicio" required value="{{ estagio.inicio }}">
+                </div>
+                <div class="form-group">
+                    <label for="termino">Data de termino</label>
+                    <input type="date" id="termino" name="termino" value="{{ estagio.termino or '' }}">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="obrigatorio">Tipo de estagio *</label>
+                    <select id="obrigatorio" name="obrigatorio" required>
+                        <option value="1" {% if estagio.obrigatorio %}selected{% endif %}>Obrigatorio</option>
+                        <option value="0" {% if not estagio.obrigatorio %}selected{% endif %}>Nao obrigatorio</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tipo">Descricao / modalidade</label>
+                    <input type="text" id="tipo" name="tipo" maxlength="100" value="{{ estagio.tipo or '' }}">
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Salvar alteracoes</button>
+                <a href="{{ url_for('aluno', aluno_id=aluno.id) }}" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
