@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gestão de Estágio e Egressos — IFTM Uberlândia Centro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <img src="iftm-logo-removebg-preview.png" />
+          <span class="brand-name" style="margin-top: 20px"
+            >Gestão de Estágio<br />e Egressos</span
+          >
+          <span class="brand-sub">Uberlândia Centro</span>
+        </div>
+        <nav class="nav" aria-label="Seções">
+          <button class="nav-item is-active" data-section="estagio">
+            <span class="nav-icon"></span> Estágio
+          </button>
+          <button class="nav-item" data-section="egressos">
+            <span class="nav-icon"></span> Egressos
+          </button>
+        </nav>
+        <p class="sidebar-note">
+          Os dados ficam salvos neste navegador (armazenamento local).
+        </p>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <nav
+            class="breadcrumb"
+            id="breadcrumb"
+            aria-label="Caminho atual"
+          ></nav>
+        </header>
+        <div class="content" id="content"></div>
+      </main>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal" id="modal" role="dialog" aria-modal="true"></div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="js/db.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
